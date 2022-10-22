@@ -21,7 +21,7 @@ Quando fala-se em _Data Science_ é inevitável falar em Python, já que um dos 
 
 Nesse sentido, trago pra vocês um projeto desenvolvido por mim, que demonstra meu avanço inicial no aprendizado da linguagem de programação em Python.
 
-Esse projeto visa comparar as preferências musicais dos habitantes Springfield (Oregon, EUA) e Shelbyville (Indiana, EUA). São dados reais da aplicação [Y.Music](https://ymusic.io/) e atemporais — a base de dados foi cedida pela Practicum sem informação de data de ocorrência.
+Esse projeto visa comparar as preferências musicais dos habitantes Springfield (Oregon, EUA) e Shelbyville (Indiana, EUA). São dados reais da aplicação [Y.Music](https://ymusic.io/) e atemporais.
 
 Os principais objetivos, descritos adiante, direcionam à formulação de hipóteses que levam a comparar o comportamento dos usuários da aplicação nas duas cidades estadunidenses. Vale ressaltar que algumas hipóteses podem ser aceitas, e outras podem ser rejeitadas. Pois na ótica dos negócios, para se fazer as escolhas certas, deve-se ser capaz de entender se estamos fazendo as suposições certas. 
 
