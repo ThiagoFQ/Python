@@ -19,7 +19,7 @@
 ## Introdução <a id='intro'></a>
 Quando fala-se em _Data Science_ é inevitável falar em Python, já que um dos focos principais do campo da Ciência de Dados é a conversão desses dados em informações significativas que agreguem valor para negócios. A linguagem de programação Python é a tecnologia mais popular e fácil de usar entre as ferramentas disponíveis para análise de dados.
 
-Nesse sentido, trago pra vocês um projeto desenvolvido na primeira _sprint_ do _bootcamp_ de Analista de Dados pela [Practicum](https://practicum.com/) que demonstra meu avanço inicial no aprendizado da linguagem de programação em Python.
+Nesse sentido, trago pra vocês um projeto desenvolvido por mim, que demonstra meu avanço inicial no aprendizado da linguagem de programação em Python.
 
 Esse projeto visa comparar as preferências musicais dos habitantes Springfield (Oregon, EUA) e Shelbyville (Indiana, EUA). São dados reais da aplicação [Y.Music](https://ymusic.io/) e atemporais — a base de dados foi cedida pela Practicum sem informação de data de ocorrência.
 
