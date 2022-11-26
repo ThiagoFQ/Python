@@ -1,43 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# Olá, Thiago!
-# 
-# Meu nome é Ramon e te ajudarei neste projeto. Fico feliz em rever seu projeto hoje.
-# 
-# Ao ao longo do texto farei algumas observações sobre melhorias no código e também farei comentários sobre suas percepções sobre o assunto. Estarei aberta a feedbacks e discussões sobre o tema.
-# 
-# Você encontrará meus comentários abaixo - **por favor, não os mova, modifique ou exclua**.
-# 
-# Você pode encontrar meus comentários em caixas verdes, amarelas ou vermelhas como esta:
-# 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Sucesso. Tudo foi feito corretamente.
-# </div>
-# 
-# 
-# 
-# <div class="alert alert-block alert-warning">
-# <b>Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Observações. Algumas recomendações.
-# </div>
-# 
-# <div class="alert alert-block alert-danger">
-# 
-# <b>Comentário do revisor: </b> <a class="tocSkip"></a>
-#     
-# Precisa de correções. O bloqueio requer algumas correções. O trabalho não pode ser aceito com os comentários em vermelho.
-# </div>
-# 
-# Você pode me responder usando isso:
-# 
-# <div class="alert alert-block alert-info">
-# <b>Resposta do Aluno.</b> <a class="tocSkip"></a>
-# </div>
-
 # # Análise de Risco de Inadimplência de Clientes
 # 
 # Segue-se um relatório para a divisão de empréstimos de um banco.
@@ -59,14 +19,6 @@ import numpy as np
 # Carregue os dados
 df = pd.read_csv('/datasets/credit_scoring_eng.csv')
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ## Exploração de Dados
 # 
@@ -93,28 +45,12 @@ df = pd.read_csv('/datasets/credit_scoring_eng.csv')
 print(f'O DataFrame contém {df.shape[0]} linhas e {df.shape[1]} colunas.')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[3]:
 
 
 # vamos exibir as primeiras N linhas
 display(df.head(10))
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[4]:
 
@@ -123,28 +59,12 @@ display(df.head(10))
 display(df.describe())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[5]:
 
 
 # Explorar os valores discrepantes
 boxplot = df.boxplot(column=['children', 'days_employed', 'dob_years', 'debt', 'total_income'])
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # - `days_employed` e `total_income` são as variáveis que mais precisam atenção no tratamento, seus dados são bem dispersos e possuem ambas desvio padrão muito acentuado.
 # 
@@ -168,13 +88,6 @@ boxplot = df.boxplot(column=['children', 'days_employed', 'dob_years', 'debt', '
 # 
 # - Em `purpose` deve-se avaliar se há alguma variável qualitativa duplicada de forma implícita.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[6]:
 
@@ -183,27 +96,12 @@ boxplot = df.boxplot(column=['children', 'days_employed', 'dob_years', 'debt', '
 df.info()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # - Há valores ausentes nas variáveis `days_employed` e `total_income`. 
 # 
 # - Em `days_employed`, seus valores ausentes podem estar relacionados a ausência de experiência de trabalho ou falta de resposta. Comparar com a variável `income_type` pode sugerir qual a opção correta.
 # 
 # - Em `total_income` esses valores podem estar ausentes por falta de renda ou recusa em apresentar essas informações por parte dos clientes. É interessante comparar com a variável `income_type` para distinguir entre as duas opções.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[7]:
 
@@ -212,23 +110,8 @@ df.info()
 display(df[df['days_employed'].isna()])
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Os valores ausentes em `days_employed` e em `total_income` parecem sugerir uma simetria e correlação. Faz sentido quando paramos para pensar que a falta de experiência de trabalho está relacionada a falta de renda. A ausência desses dados pode ser por esse fator. Os testes para comprovar essa suposição serão feitos adiante.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[8]:
 
@@ -240,28 +123,12 @@ df_nan_income = df['total_income'].isna().sum()
 print(f'Num DataFrame criado com os valores nulos em days_employed, a quantidade de linhas com valor nulo em total_income é: {nan_income}. A mesma quantidade de valores NaN no DataFrame original na variável total_income ({df_nan_income})')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[9]:
 
 
 # Verificar o tipo de emprego que os clientes com valores nulos em renda e em dias de trabalho possuem
 print(nan_df['income_type'].value_counts())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Como é o último (na verdade, o único) comando, você não precis do print()
-# 
-# </div>
-# 
 
 # In[10]:
 
@@ -275,14 +142,6 @@ print(nan_df['income_type'].value_counts())
 ).T
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão intermediária**
 # 
 # Conclui-se que a tabela filtrada corresponde a mesma quantidade de linhas de valores ausentes para as duas variáveis com valores ausentes, `days_employed` e `total_income`.
@@ -291,25 +150,11 @@ print(nan_df['income_type'].value_counts())
 # 
 # Os próximos passos envolvem realizar testes e agrupamentos para verificar se os valores ausentes surgiram de forma aleatória.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Possíveis motivos para valores ausentes nos dados**
 # 
 # A suposição de que a falta de experiência de dias de trabalho contribui para a falta de renda parece ser verdadeira. Porém há muitos clientes sem experiência de trabalho e sem renda informada que estão empregados, são empresários ou funcionários públicos. Os dados sugerem que as informações desses clientes foram coletados muito cedo, de forma que ainda não computaram experiência e nem renda nos seus tipos de emprego — o que acho improvável. O mais provável é que houve falta de informação intencional, já que renda é um dado sensível.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[11]:
 
@@ -320,14 +165,6 @@ nan_df_children = nan_df['children'].value_counts(dropna=False, normalize=True)
 print(df_children - nan_df_children)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[12]:
 
 
@@ -336,14 +173,6 @@ df_dob_years = df['dob_years'].value_counts(dropna=False, normalize=True)
 nan_df_dob_years = nan_df['dob_years'].value_counts(dropna=False, normalize=True)
 print(df_dob_years - nan_df_dob_years)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Porém, um gráfico facilita a visualização
-# 
-# </div>
-# 
 
 # In[13]:
 
@@ -354,14 +183,6 @@ nan_df_education_id = nan_df['education_id'].value_counts(dropna=False, normaliz
 print(df_education_id - nan_df_education_id)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[14]:
 
 
@@ -370,14 +191,6 @@ df_family_status_id = df['family_status_id'].value_counts(dropna=False, normaliz
 nan_df_family_status_id = nan_df['family_status_id'].value_counts(dropna=False, normalize=True)
 print(df_family_status_id - nan_df_family_status_id)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[15]:
 
@@ -390,14 +203,6 @@ print()
 print(nan_df_gender)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[16]:
 
 
@@ -409,23 +214,8 @@ print()
 print(df_debt - nan_df_debt)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # A variação das colunas `children`, `dob_years`,`education_id`,`family_status_id`, `debt` do DataFrame original com as mesmas colunas do DataFrame de valores ausentes não chega a 1% em cada um dos seus respectivos elementos. Não há sinais de um padrão na relação que afete os valores ausentes. Na coluna `gender`, apesar de haver um percentual maior de valores ausentes quando analisamos os dados das mulheres, a proporção se mantém quando analisamos a variação dos valores no DataFrame orginal e o DataFrame de valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Conclusão intermediária**
 # 
@@ -435,13 +225,6 @@ print(df_debt - nan_df_debt)
 # 
 # É importante verificar se os clientes que possuem idade igual a zero contribuem para a existência de valores ausentes em experiência em dias de emprego e renda.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[17]:
 
@@ -453,25 +236,10 @@ print()
 print(nan_df[nan_df['dob_years']==0].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão intermediária**
 # 
 # Desse modo, podemos afirmar que os valores ausentes parece serem acidentais quando não levamos em conta a relação entre as variáveis `days_employed` e `total_income`. Nem a presença de clientes com idade igual a zero e nem mesmo a pouca expressividade de valores em tipo de emprego estudante e desempregado na variável `income_type`, foram suficientes para nortear ou sugerir um padrão no surgimento de valores ausentes na base de dados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Conclusões**
 # 
@@ -483,13 +251,6 @@ print(nan_df[nan_df['dob_years']==0].count())
 # 
 # Além do preenchimento dos valores ausentes, vai ser imprescindível para uma boa análise, o tratamento de duplicatas, diferença de registros e de valores incorretos.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ## Transformação de Dados
 # 
@@ -502,14 +263,6 @@ print(nan_df[nan_df['dob_years']==0].count())
 print(df['education'].sort_values().unique())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[19]:
 
 
@@ -517,28 +270,12 @@ print(df['education'].sort_values().unique())
 df['education'] = df['education'].str.lower()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[20]:
 
 
 # Verificar todos os valores na coluna para ter certeza de que houve a correção
 print(df['education'].sort_values().unique())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Não preicsa de print() por ser o último comando
-# 
-# </div>
-# 
 
 # Verificando os dados na coluna `children`.
 
@@ -550,23 +287,8 @@ print(df['children'].value_counts(dropna=False, normalize=True))
 print(df['children'].shape[0])
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # A porcentagem de dados problemáticos da variável `children` é a soma do percentual quando há 20 (0.35%) e -1 (0.21%) filhos, aproximadamente 0.57%. Apesar dos erros serem bem baixos na variável, é de fácil entendimento que o erro está relacionado com o sinal negativo em -1, pois não há filhos negativos, e um adicional de um zero em 20, dese modo, faço os seguintes ajustes:
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[22]:
 
@@ -577,14 +299,6 @@ boxplot = df.boxplot(column='children') # Visualizar dados discrepantes
 display(df['children'].describe())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[23]:
 
 
@@ -593,25 +307,10 @@ df['children'] = df['children'].astype('int')
 print(df['children'].value_counts())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Na variável idade em anos do cliente, `dob_years`, temos valores 0 (zero) em algumas poucas linhas, mas é importante tratá-los, pois essa variável servirá para corrigir valores em `days_employed`. Desse modo, a melhor forma de corrigir é utilizando a média inteira para substituir os valores nulos.
 # 
 # Num primeiro momento foi pensado que poderia tratar-se de crianças que ainda não tinham 1 ano de vida, porém outras variáveis dessas linhas sugerem se tratar de erro de inserção de valores, uma vez que muitas linhas de idade 0 (zero) estão como empregados, aposentados e níveis educacionais mais avançados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Porém, veja que média é sensível a outliers
-# 
-# </div>
-# 
 
 # In[24]:
 
@@ -624,28 +323,12 @@ mean_dob_years = int((df['dob_years']).mean())
 df['dob_years'].fillna(int(df['dob_years'].mean()), inplace = True)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[25]:
 
 
 # Checar se ainda há valores ausentes
 print(df['dob_years'].isna().mean())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[26]:
 
@@ -656,23 +339,8 @@ print()
 print(df['dob_years'].describe())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Em `days_employed` temos valores ausentes, números extremos — dias de trabalho que superam os dias de vida dos clientes —, bem como números negativos (não há dias trabalhados negativos).
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[27]:
 
@@ -685,14 +353,6 @@ perc_neg_days = df_neg_days['days_employed'].shape[0] / df['days_employed'].shap
 print(f'A porcentagem de valores negativos é {perc_neg_days:.2%}.')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[28]:
 
 
@@ -701,14 +361,6 @@ df['days_employed'] = abs(df['days_employed']) # Transformando esses valores em 
 df_neg_days = df.loc[df.loc[:,'days_employed']<0] # Verificando se a correção foi feita
 display(df_neg_days.count())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[29]:
 
@@ -722,14 +374,6 @@ perc_outlier_days = df_outlier_days['days_employed'].shape[0] / df['days_employe
 print(f'A porcentagem de dias trabalhados que superam a idade do cliente é {perc_outlier_days:.2%}.')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[30]:
 
 
@@ -739,24 +383,9 @@ print()
 display(df.groupby('income_type')['days_employed'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Os clientes com informações de dias trabalhados que superam seus dias de vida estão concentrados, em sua totalidade, no grupo `retiree`.
 # Até 2022, para se aposentar nos Estados Unidos era necessário trabalhar por no mínimo 10 anos e ter 62 anos ou mais. Apesar de ser possível trabalhar com menos de 18 anos nos Estados Unidos, esses trabalhos raramente recolhem impostos ou possuem contratos que garantem os critérios para se aposentar. Desse modo, os valores a serem substituídos em `days_employed` devem variar entre 3650 e a multiplicação de 365 dias com idade atual do cliente menos 18 anos — (`dob_years` - 18)*365.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[31]:
 
@@ -769,14 +398,6 @@ values_dmedian_employed = dif_days.groupby('income_type')['days_employed'].media
 display(values_dmedian_employed)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[32]:
 
 
@@ -788,14 +409,6 @@ def preencher_days_employed(row):
     else:
         return row['days_employed']
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[33]:
 
@@ -811,28 +424,12 @@ df[df['days_employed']>(df['dob_years']*365)].iloc[0]
 preencher_days_employed(df[df['days_employed']>(df['dob_years']*365)].iloc[0])
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[35]:
 
 
 # Aplicar a função inteira no DataFrame
 df['days_employed'] = df.apply(preencher_days_employed, axis = 1)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[36]:
 
@@ -841,14 +438,6 @@ df['days_employed'] = df.apply(preencher_days_employed, axis = 1)
 df_outlier_days = df.loc[df.loc[:,'days_employed']>(df['dob_years']*365)]
 display(df_outlier_days.groupby('income_type')['days_employed'].count())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Verificar agora a idade do cliente, `dob_years`, e corrigir possíveis problemas que possam surgir.
 
@@ -862,14 +451,6 @@ do_years = df[df['dob_years']<=0].shape[0] / df['dob_years'].shape[0]
 print(f'A porcentagem de clientes com idade superior a 100 anos é {up_years:.2%}.')
 print(f'A porcentagem de clientes com idade igual ou inferior a 0 (zero) anos é {do_years:.2%}.')
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Verificar a coluna `family_status` e resolver possíveis problemas.
 
@@ -886,14 +467,6 @@ print()
 fstatus_pivot = df.pivot_table(index='family_status', values='family_status_id', aggfunc='mean')
 print(fstatus_pivot)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Num primeiro momento, não há problemáticas apresentadas por essa variável. Apesar das leis brasileiras considerarem união civil (`civil partnership`) algo intrínseco ao casamento (`married`), devemos levar em consideração a coleta dos dados ter sido feito no idioma inglês. Desse modo, o órgão governamental norte americano CDC — _Center for Disease Control and Prevention_, através da _National Center for Health Statistics_ mantém as mesmas indicações em seus relatórios anuais.
 
@@ -918,23 +491,8 @@ print()
 print(df.groupby('gender')['family_status'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Há apenas um valor discrepante, sem indicação de gênero. Nesse caso, realiza-se a exclusão da linha por não ter representatividade na quantidade total dos dados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[40]:
 
@@ -943,28 +501,12 @@ print(df.groupby('gender')['family_status'].count())
 df.drop(df[df['gender']=='XNA'].index, inplace = True)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[41]:
 
 
 # Verificar o resultado
 print(df['gender'].unique())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Verificar a coluna `income_type` e resolver possíveis problemas.
 
@@ -979,25 +521,10 @@ print()
 print(df.groupby('income_type')['gender'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Vale ressaltar que `income_type` representa o tipo de emprego que o cliente do banco possui. Temos aqui a existência de duplicatas implícitas, uma vez que `business` e `entrepreneur` representam clientes do banco que possuem empresas — empresários. Nesse caso, a melhor tratativa é unir esses dados apenas na variável `business`, pois é a mais representativa no conjunto de dados.
 # 
 # Outro ponto a corrigir é a inexpressiva quantidade de clientes em `unemployed`, `student` e `paternity / maternity leave`, não justificando a criação de variáveis para essas categorias. Assim, excluo essas três categorias, totalizando quatro linhas, uma vez que não representam um tipo de emprego que a variável `income_type` descreve.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[43]:
 
@@ -1012,14 +539,6 @@ df['income_type']=np.where(df['income_type']=='paternity / maternity leave', np.
 df = df.dropna(subset=['income_type'])
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[44]:
 
 
@@ -1031,14 +550,6 @@ print()
 print(df.groupby('income_type')['gender'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Verificar se temos duplicatas nos dados.
 
 # In[45]:
@@ -1048,23 +559,8 @@ print(df.groupby('income_type')['gender'].count())
 display(df[df.duplicated()])
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Apesar de identificarmos 71 linhas com valores duplicados, não é correto fazer a exclusão deles, uma vez que não temos nenhuma variável de identificação única do cliente, como um `client_id` por exemplo. Além disso, essas duplicatas se concentram, em sua maioria, por causa da normalização realizada nos valores extremos de `days_employed`, bem como na ausência de valores em `total_income`, que poderiam nos ajudar a identificar se essas duplicatas são dos mesmos clientes ou aleatoriedade dos dados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Concordo com sua justificativa.
-# 
-# </div>
-# 
 
 # In[46]:
 
@@ -1075,13 +571,6 @@ df.info()
 
 # Depois das primeiras tratativas nos dados, temos um DataFrame com quatro linhas nulas, que serão tratas adiante. As variáveis `days_employed` e `total_income` ainda possuem valores ausentes e estão com o tipo _float_, devemos alterar o tipo de dados para inteiros também. As alterações realizadas não chegam a 2% do total dos dados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ## Trabalhando com valores ausentes
 
@@ -1095,14 +584,6 @@ print(df.groupby('education_id')['education'].unique())
 print()
 print(df.groupby('family_status_id')['family_status'].unique())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Porém, você não precisa do groupby. Basta df['education'].unique()
-# 
-# </div>
-# 
 
 # Assim, verificamos que temos apenas valores únicos relacionados a um único id em suas variáveis correspondentes.
 
@@ -1131,14 +612,6 @@ def age_group(age):
         return 'seniors'    
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[49]:
 
 
@@ -1149,28 +622,12 @@ print(age_group(60))
 print(age_group(73))
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[50]:
 
 
 # Criar coluna nova com base na função
 df['age_group'] = df['dob_years'].apply(age_group)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[51]:
 
@@ -1179,14 +636,6 @@ df['age_group'] = df['dob_years'].apply(age_group)
 df['age_group']
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Das variáveis disponíveis no DataFrame, os fatores que podem influenciar o nível de renda do indivíduo, num primeiro momento, são:
 # * Escolaridade (`education`): quanto maior o grau acadêmico, maior a tendência de ter melhores salários.
 # * Sexo (`gender`): inúmeros estudos comporvam a discrepância entre salários de trabalhadores de sexo diferente.
@@ -1194,13 +643,6 @@ df['age_group']
 # 
 # Dias Trabalhados (`days_employed`) é uma variável que se supõe imaginar que, quanto mais se trabalha, mais se ganha. Porém essa variável também necessita ter seus valores ausentes preenchidos, de tal modo que não podemos utilizá-la, pois estaríamos correndo o risco de viés nos dados.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[52]:
 
@@ -1208,14 +650,6 @@ df['age_group']
 # Matriz de correlão entre as variáveis númericas
 display(df.corr())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # As variáveis númericas que mais se correlacionam com `toal_income` são `education_id` e `days_employed`.
 # Agora vamos criar uma tabela que tenha apenas dados sem valores ausentes. Esses dados serão usados para restaurar os valores ausentes, através de suas estatísticas descritivas.
@@ -1228,28 +662,12 @@ df_not_nan = df[df['total_income'].isnull()==False]
 print(df_not_nan.head())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[54]:
 
 
 # Verificar que não há valores ausentes
 df_not_nan.isna().sum()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[55]:
 
@@ -1261,23 +679,8 @@ print('*'*35)
 print(df_not_nan.groupby('education')['total_income'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Fica evidente que as menores rendas estão concentradas na educação primária e secundária — 21144 e 24596, respectivamente —, enquanto as maiores rendas estão centradas em clientes que possuem algum nível superior. Essa variável será levada em consideração para cálculo de preenchimento dos valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[56]:
 
@@ -1289,23 +692,8 @@ print('*'*35)
 print(df_not_nan.groupby('age_group')['total_income'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Apesar do grupo de adultos terem renda média superior aos grupos restantes, isso se deve pelo intervalo desse grupo ser o maior entre todos, compreende os anos de 25 a 64 anos. A base de dados também não favorece os outros dois grupos: os dados para _youth_ só iniciam da idade 19, enquanto os dados para _seniors_ só atingem a idade 73. Essa variável **não** será levada em consideração para cálculo de preenchimento dos valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[57]:
 
@@ -1317,23 +705,8 @@ print('*'*35)
 print(df_not_nan.groupby('gender')['total_income'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # É perceptível que clientes do sexo feminino possuem renda até 20% inferior que a renda dos clientes masculinos. Variável será levada em consideração para cálculo de preenchimento dos valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[58]:
 
@@ -1345,23 +718,8 @@ print('*'*35)
 print(df_not_nan.groupby('income_type')['total_income'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Empresários são os tipos de renda que mais ganham, enquanto aposentados são os que menos ganham. Desse modo, confirmam os dados de que aposentados sofrem com reduções substanciais em suas rendas. Essa variável será levada em consideração para cálculo de preenchimento dos valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[59]:
 
@@ -1373,34 +731,12 @@ print('*'*35)
 print(df_not_nan.groupby('family_status')['total_income'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Há um nivelamento da renda quando a ótica é o status familiar, não há indícios de que a renda do indivíduo possa ser influenciada por seu status familiar. Essa variável **não** será levada em consideração para cálculo de preenchimento dos valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Já sabemos que características como o tipo de trabalho `income_type`, nível educacional `education` e gênero `gender` influenciam a renda do indivíduo.
 # Como a variável `total_income` possui valores com grande variação entre mínimo e máximo, a literatura sugere a utilização da mediana para atenuar os valores extremos. A média ficaria muito influenciada por esses valores discrepantes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[60]:
 
@@ -1408,14 +744,6 @@ print(df_not_nan.groupby('family_status')['total_income'].median())
 # Verificar a mediana dos dados considerando as variáveis de estudo
 df.groupby(['education','gender','income_type'])['total_income'].median()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[61]:
 
@@ -1425,28 +753,12 @@ values_total_income = df.groupby(['education','gender','income_type'])['total_in
 print(values_total_income)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[62]:
 
 
 # Substituir os valores ausentes
 df['total_income'].fillna(values_total_income, inplace = True)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[63]:
 
@@ -1455,28 +767,12 @@ df['total_income'].fillna(values_total_income, inplace = True)
 df['total_income'].isna().sum()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[64]:
 
 
 # Verificar se há algum erro
 display(df.head(20))
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Difícil encontrar algum erro visualizando apenas 20 linhas. O ideal seria criar funções para validar.
-# 
-# </div>
-# 
 
 # In[65]:
 
@@ -1485,23 +781,8 @@ display(df.head(20))
 df.info()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # A variável `total_income` foi preenchida com a mediana do grupo das variáveis `education`, `gender` e `income_type`, tornando a variável livre de valores ausentes. `total_income` possui a mesma quantidade de entradas que as outras variáveis, com excessão de `days_employed` que trataremos adiante.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ###  Restaurar valores em `days_employed`
 
@@ -1515,13 +796,6 @@ df.info()
 # 
 # Nesse sentido, vamos analisar a correlação entre as variáveis e `days_employed`.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[66]:
 
@@ -1530,24 +804,9 @@ df.info()
 display(df.corr())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # A variável `days_employed` possui maiores correlações absolutas com `dob_years`, `children` e `education_id`.
 # Em parte, a alta correlação entre `dob_years` e `days_employed` se deve pelo ajuste realizado na quantidade de dias trabalhado que superavam os dias de vida dos clientes. Esse ajuste realizado nos clientes, que tinham mais dias trabalhados que dias de vida, acabou por fortalecer essa correlação.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[67]:
 
@@ -1555,14 +814,6 @@ display(df.corr())
 # Verificar se há valores ausentes
 df['days_employed'].isna().sum()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[68]:
 
@@ -1574,23 +825,8 @@ print('*'*35)
 print(df_not_nan.groupby('children')['days_employed'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Então, não ter filhos parece justificar o aumento considerável na quantidade de dias trabalhado, quando comparado com pessoas com filhos (qualquer quantidade). Criar uma variável binária que represente se o indivíduo tem ou não filhos pode ser uma boa solução para a utilização dessa variável.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[69]:
 
@@ -1598,14 +834,6 @@ print(df_not_nan.groupby('children')['days_employed'].median())
 # Criar a coluna "parents"
 df['parents'] = np.where(df['children']>0, 1, 0)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Porém, pode ser mais direto: df['parents'] = df['children']>0
-# 
-# </div>
-# 
 
 # In[70]:
 
@@ -1616,14 +844,6 @@ print('*'*35)
 # Valores medianos de dias de trabalho com base na quantidade de filhos
 print(df.groupby('parents')['days_employed'].median())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Agora já podemos usar a nova variável `parents` para auxiliar no preenchimento dos valores ausentes em `day_employed`.
 
@@ -1637,14 +857,6 @@ print('*'*35)
 print(df.groupby('age_group')['days_employed'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Como esperado, maiores idades correspondem a uma maior quantidade de dias trabalhados. `age_group` será utilizada.
 
 # In[72]:
@@ -1657,23 +869,8 @@ print('*'*35)
 print(df.groupby('education')['days_employed'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Em média, pessoas com educação primária tem quase tantos dias de trabalho quanto pessoas com nível superior. Os dados não sugerem, de forma tão contundente, que os dias trabalhados possam estar diretamente correlacionados com o nível acadêmico. Essa variável **não** será utilizada.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[73]:
 
@@ -1685,23 +882,8 @@ print('*'*35)
 print(df.groupby('income_type')['days_employed'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Como esperado, reformados possuem mais dias de trabalho que outros tipos de trabalhos. Funcionários públicos também tendem a ficar mais tempo. Essa variável será utilizada.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[74]:
 
@@ -1713,25 +895,10 @@ print('*'*35)
 print(df.groupby('gender')['days_employed'].median())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # Homens possuem mais dias trabalhados que mulheres, uma das causas principais pode ser por causa dos filhos. Nesse sentido, tanto a variável `gender` como a variável `parents` serão utilizados para preencher valores ausentes em `days_employed`.
 # 
 # A mediana ainda é a melhor estatística para substituir os valores ausentes em `days_employed`, uma vez que suavizaria os dados e evitaria a influência dos _outliers_ caso utilizássemos a média.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[75]:
 
@@ -1740,23 +907,8 @@ print(df.groupby('gender')['days_employed'].median())
 df.groupby(['income_type','age_group','gender', 'parents'])['days_employed'].median()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # O agrupamento acima revela que as variáveis `parents` e `gender` são bem similares e possuem maiores discrepâncias nos grupos de idade mais jovens. Para evitar multicolinariedade entre essas duas variáveis é preferível remover uma delas. Desse modo, ficaremos apenas com as variáveis `income_type`, `age_group` e `gender` para preencher os valores ausentes.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[76]:
 
@@ -1764,14 +916,6 @@ df.groupby(['income_type','age_group','gender', 'parents'])['days_employed'].med
 # Verificar a mediana com as variáveis propostas
 df.groupby(['income_type','age_group','gender'])['days_employed'].median()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[77]:
 
@@ -1781,28 +925,12 @@ values_days_employed = df.groupby(['income_type','age_group','gender'])['days_em
 print(values_days_employed)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[78]:
 
 
 # Verificar se há valores ausentes
 df['days_employed'].isna().sum()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[79]:
 
@@ -1811,28 +939,12 @@ df['days_employed'].isna().sum()
 df['days_employed'].fillna(values_days_employed, inplace = True)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[80]:
 
 
 # Verificar se há valores ausentes
 df['days_employed'].isna().sum()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Desse modo, temos todos os valores preenchidos e ausência de valores faltantes.
 
@@ -1843,28 +955,12 @@ df['days_employed'].isna().sum()
 df['days_employed'] = df['days_employed'].astype('int')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[82]:
 
 
 # Verificar o número de entradas nas colunas
 df.info()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ## Categorização de Dados
 # 
@@ -1881,28 +977,12 @@ df.info()
 df['purpose'].value_counts()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[84]:
 
 
 # Exibir valores únicos
 print(df['purpose'].unique())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # Com base nas características únicas da variável `purpose`, podemos observar que existem quatro categorias principais nas quais podem resumir todos os dados dessa variável. Os quatro grupos são:
 # * car: clientes que desejam adquirir um carro.	
@@ -1927,28 +1007,12 @@ def purpose_categories(row):
         return 'education'
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Parabéns. Elegante e eficiente!
-# 
-# </div>
-# 
-
 # In[86]:
 
 
 # Coluna com as categorias
 df['purpose_categories'] = df.apply(purpose_categories, axis=1)
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[87]:
 
@@ -1957,28 +1021,12 @@ df['purpose_categories'] = df.apply(purpose_categories, axis=1)
 df['purpose_categories'].value_counts()
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[88]:
 
 
 # Obter estatísticas resumidas para a coluna
 print(df['purpose_categories'].describe())
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # A categorização por renda será feita de acordo com os relatórios emitidos pela _Bureau of Economic Analysis_, departamento do comércio do governo norte americano.
 # Temos uma divisão da renda individual, ou pessoal, da seguinte forma:
@@ -1997,14 +1045,6 @@ print()
 print(df.boxplot(column=['total_income']))
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[90]:
 
 
@@ -2022,14 +1062,6 @@ def income_class(income):
         return 'rich'
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto. Porém, o ideal era não ter valores fixos
-# 
-# </div>
-# 
-
 # In[91]:
 
 
@@ -2038,28 +1070,12 @@ df['income_class'] = df['total_income'].apply(income_class)
 #df['purpose_categories'] = df.apply(purpose_categories, axis=1)
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[92]:
 
 
 # Valores de cada categoria para ver a distribuição
 df['income_class'].value_counts()
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # ## Verificar as Hipóteses
 # 
@@ -2075,14 +1091,6 @@ print('*'*35)
 print(df.groupby(['children', 'parents'])['debt'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[94]:
 
 
@@ -2091,14 +1099,6 @@ pivot_children = df.pivot_table(index='children', columns='debt', values='days_e
 pivot_children['defaulter_percent'] = pivot_children[1] / (pivot_children[1] + pivot_children[0])*100
 pivot_children.sort_values(by='defaulter_percent')
 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[95]:
 
@@ -2109,25 +1109,10 @@ pivot_parents['defaulter_percent'] = pivot_parents[1] / (pivot_parents[1] + pivo
 pivot_parents.sort_values(by='defaulter_percent')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão**
 # 
 # De acordo com os dados, não ter filhos aumentam ligeiramente suas chances de ser um bom adimplente. A quantidade de filhos não parece influenciar de forma significativa a inadimplência.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Existe uma correlação entre o status familiar e o pagamento em dia?**
 
@@ -2140,14 +1125,6 @@ print('*'*35)
 print(df.groupby('family_status')['debt'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[97]:
 
 
@@ -2157,25 +1134,10 @@ pivot_status['defaulter_percent'] = pivot_status[1] / (pivot_status[1] + pivot_s
 pivot_status.sort_values(by='defaulter_percent')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão**
 # 
 # Pessoas solteiras possuem uma propensão ligeiramente superior de inadimplência quando comparamos às pessoas casadas. Viúvos(as) são os que possuem menores índices de inadimplência.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Existe uma correlação entre o nível de renda e o pagamento em dia?**
 
@@ -2188,14 +1150,6 @@ print('*'*35)
 print(df.groupby('income_class')['debt'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[99]:
 
 
@@ -2205,25 +1159,10 @@ pivot_class['defaulter_percent'] = pivot_class[1] / (pivot_class[1] + pivot_clas
 pivot_class.sort_values(by='defaulter_percent')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão**
 # 
 # Conforme a divisão de classes em `total_income` que produziu a variável `income_class`, temos que o nível de inadimplência não varia tanto entre as classes. Apesar dos ricos e da classe média alta estarem com os melhores índices de adimplência.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # **Como a finalidade do crédito afeta a taxa de inadimplência?**
 
@@ -2236,14 +1175,6 @@ print('*'*35)
 print(df.groupby('purpose_categories')['debt'].count())
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # In[101]:
 
 
@@ -2253,14 +1184,6 @@ pivot_purpose['defaulter_percent'] = pivot_purpose[1] / (pivot_purpose[1] + pivo
 pivot_purpose.sort_values(by='defaulter_percent')
 
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
-
 # **Conclusão**
 # 
 # Os empréstimos com finalidade imobiliária, em sua maioria para aquisição de imóvel, possuem as menores taxas de inadimplência do conjunto de dados. Isso deve-se a garantia de crédito vinculada aos empréstimos imobiliários, uma vez que os imóveis podem ser liquidados para quitação desses mesmos empréstimos.
@@ -2269,13 +1192,6 @@ pivot_purpose.sort_values(by='defaulter_percent')
 # 
 # Empréstimos para educação e casamento não possuem garantias associadas, porém, este último, geralmente conta com a renda de duas pessoas para pagar as parcelas do empréstimo. Deixando assim, os empréstimos para educação com um dos índices mais altos de inadimplência junto com os empréstimos para aquisição de carros.
 
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Correto
-# 
-# </div>
-# 
 
 # In[102]:
 
@@ -2326,18 +1242,6 @@ df.info()
 # Empréstimos para educação e casamento não possuem garantias associadas, porém, este último, geralmente conta com a renda de duas pessoas para pagar as parcelas do empréstimo. Deixando assim, os empréstimos para educação com um dos índices mais altos de inadimplência junto com os empréstimos para aquisição de carros.
 # 
 
-# 
-# <div class="alert alert-block alert-success">
-# <b>Comentário Geral do Revisor</b> <a class="tocSkip"></a>
-# 
-# Obrigado por enviar seu projeto. 
-#     
-# Parabéns, você fez um excelente trabalho. Você responeu corretamente.
-# 
-# Você demonstrou conhecimento, boas habilidades investigativas e de codificação.úvida, não hesite em me contactar.
-#     
-# Desejo sucesso na jornada!
-# </div>
 
 # ## REFERÊNCIAS
 # 
@@ -2347,12 +1251,4 @@ df.info()
 # 
 # * Statistique Canada: Acesso em 20 de nomvembro de 2022, em https://www.statcan.gc.ca/en/concepts/definitions/age2
 # 
-# 
-
-# <div class="alert alert-block alert-success">
-# <b> Comentário do revisor: </b> <a class="tocSkip"></a>
-# 
-# Muito legal a seção de referências, pois ajuda a dar credibilidade ao trabalho.
-# 
-# </div>
 # 
