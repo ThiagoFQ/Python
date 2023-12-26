@@ -6,8 +6,26 @@ Para isso, utilizo três arquivos que servirão como datasets:
 * /datasets/orders_log_us.csv
 * /datasets/costs_us.csv
 
-Adiante crio relatórios e calculos diversas métricas para Produto, Vendas e Marketing, respondendo importantes questionamentos desses setores.
-Por fim, uma conclusão é elaborada com recomendações de como e onde os investimentos deveriam ser alocados.
+No capítulo 1, mostro a preparação dos dados.
+No capítulo 2, calculo as principais métricas e respondo as seguintes perguntas:
+* Quanto ao produto:
+1. Quantas pessoas usam-no cada dia, semana e mês?
+2. Quantas sessões ocorrem por dia? (considerando que um usuário pode realizar várias sessões).
+3. Qual a duração de cada sessão?
+4. Com que frequência os usuários voltam?
+
+* Quanto às vendas:
+1. Quando as pessoas começam a comprar?
+2. Quantos pedidos os clientes fazem durante um determinado período de tempo?
+3. Qual o volume médio de uma compra?
+4. Quanto dinheiro as compras trazem para a empresa (LTV)?
+
+* Quanto ao marketing:
+1. Quanto dinheiro foi gasto? No total/por origem/ao longo do tempo?
+2. Quanto custou a aquisição de clientes para cada origem (CAC)?
+3. Os investimentos valem a pena? (ROI)
+
+Já no capítulo 3 concluo com as principais considerações e recomendações para o time de marketing da empresa, incluindo alocação de investimentos.
 
 
 # 1. Carregar os dados e prepará-los para análise
