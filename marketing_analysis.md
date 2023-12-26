@@ -662,8 +662,8 @@ plt.show()
 ```
 
 
-    
-![png](output_46_0.png)
+![image](https://github.com/ThiagoFQ/Python/assets/112325834/3f9475e3-838a-4ea3-be52-7ed01c9eb842)
+
     
 
 
@@ -687,7 +687,8 @@ plt.show()
 
 
     
-![png](output_47_0.png)
+![image](https://github.com/ThiagoFQ/Python/assets/112325834/788936c4-24c9-441a-9b08-59981b73532d)
+
     
 
 
@@ -784,7 +785,8 @@ plt.show()
 
 
     
-![png](output_51_0.png)
+![image](https://github.com/ThiagoFQ/Python/assets/112325834/80c39e0d-c4d5-445e-a0b9-fb60ff213acf)
+
     
 
 Fica evidente que os maiores custos de aquisição de clientes (CAC) se concentram na Origem 3, 10 e 4. Em contrapartida as Origens 1 e 2 possuem os menores custos com as maiores vendas. 
