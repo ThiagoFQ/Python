@@ -1,34 +1,14 @@
-Olá, estudante!
+Olá, visitante!
 
-Meu nome é Ramon. Fico feliz em revisar seu projeto. Talvez sejam necessárias várias iterações, mas vamos aprender e crescer juntos na caminhada. Conte comigo! Ao ao longo do texto farei algumas observações sobre melhorias no código e também farei comentários sobre suas percepções sobre o assunto. Estarei aberto a feedbacks e discussões sobre o tema.
+Esse projeto visa otimizar as despesas com marketing de um site de vendas.
+Para isso, utilizo três arquivos que servirão como datasets:
+* /datasets/visits_log_us.csv
+* /datasets/orders_log_us.csv
+* /datasets/costs_us.csv
 
-**Peço que mantenha e não altere os comentários que eu fizer por aqui para que possamos nos localizar posteriormente, ok?**
+Adiante crio relatórios e calculos diversas métricas para Produto, Vendas e Marketing, respondendo importantes questionamentos desses setores.
+Por fim, uma conclusão é elaborada com recomendações de como e onde os investimentos deveriam ser alocados.
 
-Mais uma coisa, vamos utilizar um código de cores para você entender os meus feedbacks no seu notebook. Funciona assim:
-
-<div class="alert alert-block alert-success">
-<b> Comentário do revisor: </b> <a class="tocSkip"></a>
-
-Sucesso. Tudo foi feito corretamente.
-</div>
-
-<div class="alert alert-block alert-warning">
-<b>Comentário do revisor: </b> <a class="tocSkip"></a>
-
-Alerta não crítco, mas que pode ser corrigido para melhoria geral no seu código/análise
-</div>
-
-<div class="alert alert-block alert-danger">
-
-<b>Comentário do revisor: </b> <a class="tocSkip"></a>
-    
-Erro que precisa ser consertado, caso contrário seu projeto **não** será aceito.
-</div>
-
-Você pode me responder usando isso:
-<div class="alert alert-block alert-info">
-<b>Resposta do Aluno.</b> <a class="tocSkip"></a>
-</div>
 
 # 1. Carregar os dados e prepará-los para análise
 
@@ -438,12 +418,6 @@ orders['month'] = orders['buy_ts'].dt.to_period('M')
 orders['year'] = orders['buy_ts'].dt.to_period('Y')
 ```
 
-<div class="alert alert-block alert-success">
-<b> Comentário do revisor: </b> <a class="tocSkip"></a>
-
-Correto. Parabéns por usar funções dt.funcao()
-</div>
-
 
 ```python
 # Calcular a contagem de pedidos por coorte de semana, mês e ano
@@ -813,13 +787,6 @@ plt.show()
 ![png](output_51_0.png)
     
 
-
-<div class="alert alert-block alert-warning">
-<b> Comentário do revisor: </b> <a class="tocSkip"></a>
-
-Achei eses gráfico em  barras confuso. CAC (em verde) nem aparece. Eu acredito que seria melhor apresentar CAC em outro gráfioc por conta da escala.
-</div>
-
 Fica evidente que os maiores custos de aquisição de clientes (CAC) se concentram na Origem 3, 10 e 4. Em contrapartida as Origens 1 e 2 possuem os menores custos com as maiores vendas. 
 
 
@@ -919,22 +886,3 @@ Com base nessas conclusões e recomendações, a equipe de marketing pode tomar 
 #### Conclusão Final
 
 Em resumo, a análise abrangente dos dados proporcionou insights valiosos para direcionar estratégias de negócios. As descobertas destacaram áreas de oportunidade, bem como desafios a serem abordados. Ao seguir as recomendações e tomar medidas baseadas em dados, a plataforma de comércio eletrônico pode melhorar a experiência do usuário, aumentar a conversão e otimizar o retorno sobre o investimento em marketing, impulsionando o sucesso a longo prazo.
-
-
-<div class="alert alert-block alert-success">
-<b>Comentário Geral do Revisor</b> <a class="tocSkip"></a>
-
-Obrigado por enviar seu projeto. 
-    
-Parabéns, você fez um bom trabalho. No geral, você respondeu corretamente as questões.
-
-Como pontos fortes do projeto, destaco:
-- Código simples e eficiente
-- Bons gráficos
-- Boa conclusão
-
-Você programa muito bem. Utilizou funções não muito comuns (mais avançadas). Não consegui encontrar erros no código, que já estava bastante eficiente (apenas a função diff que demorou um tanto). No estágio que você se encontra minha dica é: aprender inglês, se possível, escrever notebooks em inglês para praticar writing e começar a se preprar para entrevistas em inglês.
-
-Desejo sucesso na sua jornada.    
-</div>
-
